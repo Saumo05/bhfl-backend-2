@@ -1,11 +1,11 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
+const app = express();
 app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://bhfl-frontend-tad3.vercel.app",
+    origin: ["http://localhost:3001", "https://bhfl-frontend.vercel.app"],
   })
 );
 
@@ -49,5 +49,5 @@ app.get("/bfhl", (req, res) => {
   res.status(200).json({ operation_code: 1 });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export the app for Vercel
+module.exports = app;
